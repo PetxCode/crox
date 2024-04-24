@@ -1,3 +1,4 @@
+import moment from "moment";
 import { FC, useEffect, useState } from "react";
 import { MdFavorite } from "react-icons/md";
 import styled from "styled-components";
@@ -33,7 +34,10 @@ const DisplayScreen: FC<iProps> = ({ data }) => {
             <Bottom>
               <Right>
                 <Avatar src={props.image} />
-                <Name>{props.name}</Name>
+                <div>
+                  <Name>{props.name}</Name>
+                  <P>{moment(props.date).fromNow()}</P>
+                </div>
               </Right>
               <Right>
                 <IconHolder>
@@ -52,6 +56,10 @@ const DisplayScreen: FC<iProps> = ({ data }) => {
 };
 
 export default DisplayScreen;
+
+const P = styled.div`
+  font-size: 10px;
+`;
 
 const Rate = styled.div`
   font-size: 12px;
@@ -90,7 +98,7 @@ const Avatar = styled.img`
 const Right = styled.div`
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
 `;
 
 const Bottom = styled.div`
